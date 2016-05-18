@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<quartz xmlns="http://www.opensymphony.com/quartz/JobSchedulingData"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.opensymphony.com/quartz/JobSchedulingData
+  http://www.opensymphony.com/quartz/xml/job_scheduling_data_1_5.xsd"
+  version="1.5">
+
+  <job>
+    <job-detail>
+      <name>testJob1</name>
+      <group>testJobs</group>
+      <description>Test Job Number 1</description>
+      <job-class>quartzTest.HelloQuartzJob</job-class>
+      <volatility>false</volatility>
+      <durability>false</durability>
+      <recover>false</recover>
+      <job-data-map>
+        <entry>
+          <key>test1</key>
+          <value>test1</value>
+        </entry>
+        <entry>
+          <key>test2</key>
+          <value>test2</value>
+        </entry>
+      </job-data-map>
+    </job-detail>
+    <trigger>
+      <cron>
+        <name>testTrigger1</name>
+        <group>testJobs</group>
+        <description>Test Trigger Number 1</description>
+        <job-name>testJob1</job-name>
+        <job-group>testJobs</job-group>
+        <!--
+        <start-time>2003-12-17T14:15:00</start-time>  
+        <end-time>2013-12-17T14:15:00</end-time>  
+-->
+        <cron-expression>0/15 * * ? * *</cron-expression>
+        <!-- every 15 seconds... -->
+      </cron>
+    </trigger>
+  </job>
+  
+</quartz>
